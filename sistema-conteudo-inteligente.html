@@ -274,6 +274,61 @@
     padding-left: 16px;
   }
 
+  /* Modules — what you get */
+  .module-group { margin-top: 40px; }
+  .module-group-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .module-group-label.available { color: var(--accent-2); }
+  .module-group-label.locked { color: var(--ink-faint); }
+
+  .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .module-grid-compact { grid-template-columns: 1fr 1fr; }
+
+  .module-card {
+    border-radius: 14px;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+  }
+  .module-card.available { background: var(--accent-soft); border-color: rgba(47, 92, 255, 0.3); }
+  .module-card.locked { background: var(--bg-elevated); }
+
+  .module-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .module-tag.available { background: var(--accent); color: #fff; }
+  .module-tag.locked { background: var(--bg-elevated-2); color: var(--ink-faint); border: 1px solid var(--line); }
+
+  .module-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 10px; }
+  .module-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .module-card li { font-size: 0.86rem; color: var(--ink-muted); padding-left: 16px; position: relative; }
+  .module-card.available li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-2); }
+  .module-card.locked p { font-size: 0.84rem; color: var(--ink-faint); line-height: 1.55; }
+
+  .early-access-callout {
+    margin-top: 20px;
+    background: var(--bg-elevated);
+    border: 1px dashed rgba(47, 92, 255, 0.35);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+  .early-access-callout p { font-size: 0.92rem; color: var(--ink-muted); margin-top: 4px; }
+  .early-access-callout .early-price { color: var(--ink); font-size: 1rem; margin-top: 8px; }
+  .early-access-callout .early-price strong { color: var(--accent-2); }
+
   /* For who / not for who */
   .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .fit-card {
@@ -305,6 +360,47 @@
     padding: 10px 16px; font-size: 0.88rem; text-decoration: none; color: var(--ink);
   }
   .contact-link:hover { border-color: var(--accent); }
+
+  /* Founder photo section */
+  .founder-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 36px;
+    align-items: center;
+    background: var(--bg-elevated);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .founder-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .founder-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: grayscale(45%) contrast(1.08) brightness(0.92) saturate(0.9);
+    display: block;
+  }
+  .founder-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 100% at 35% 25%, transparent 45%, var(--bg-elevated) 100%),
+      linear-gradient(135deg, rgba(47, 92, 255, 0.2), transparent 55%);
+    pointer-events: none;
+  }
+  .founder-copy p { color: var(--ink-muted); font-size: 0.98rem; }
+  .founder-closing {
+    color: var(--accent-2) !important;
+    font-weight: 600;
+    margin-top: 6px;
+  }
 
   /* Offer / pricing */
   .offer-card {
@@ -378,6 +474,9 @@
   @media (max-width: 760px) {
     .steps-grid { grid-template-columns: 1fr; }
     .fit-grid { grid-template-columns: 1fr; }
+    .module-grid, .module-grid-compact { grid-template-columns: 1fr; }
+    .founder-card { grid-template-columns: 1fr; padding: 24px; text-align: left; }
+    .founder-photo { max-width: 260px; margin: 0 auto; }
     section { padding: 52px 0; }
     .offer-card { padding: 32px 22px; }
     .price-new { font-size: 2.4rem; }
@@ -487,6 +586,84 @@
     </div>
   </section>
 
+  <section id="modulos">
+    <div class="wrap">
+      <div class="section-label">O que você recebe</div>
+      <h2>O que você vai construir com o Sistema Conteúdo Inteligente</h2>
+      <p class="lead">Você entra agora com os primeiros módulos disponíveis e acompanha a evolução do método enquanto novos conteúdos são liberados.</p>
+
+      <div class="module-group">
+        <div class="module-group-label available">✓ Disponível agora</div>
+        <div class="module-grid">
+          <div class="module-card available">
+            <span class="module-tag available">Liberado</span>
+            <h3>Módulo 1 — Comece Aqui</h3>
+            <ul>
+              <li>Como funciona o método</li>
+              <li>Como utilizar o sistema</li>
+              <li>Como aproveitar melhor o curso</li>
+            </ul>
+          </div>
+          <div class="module-card available">
+            <span class="module-tag available">Liberado</span>
+            <h3>Módulo 2 — Crie seu Assistente Estratégico</h3>
+            <ul>
+              <li>Configuração do Assistente Estratégico de Conteúdo</li>
+              <li>Prompt completo</li>
+              <li>Entrevista personalizada</li>
+              <li>Criação do Perfil Mestre do Negócio</li>
+              <li>Como transformar a IA em um assistente que conhece seu negócio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-group">
+        <div class="module-group-label locked">🔒 Liberado progressivamente</div>
+        <div class="module-grid module-grid-compact">
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 3 — Como Encontrar Ideias Infinitas</h3>
+            <p>Como usar IA para encontrar ideias · Como transformar dúvidas dos clientes em conteúdo · Como usar referências e inspirações · Como nunca mais depender de inspiração para saber o que postar</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 4 — Transformando Ideias em Conteúdo</h3>
+            <p>Como desenvolver uma ideia · Como conversar com a IA para aprofundar uma ideia · Como transformar uma ideia em diferentes conteúdos</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 5 — Ganchos que Fazem Parar</h3>
+            <p>Como criar boas aberturas · Tipos de ganchos · Como adaptar ganchos para diferentes conteúdos</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 6 — Formatos de Conteúdo</h3>
+            <p>Reels · Carrosséis · Stories · Conteúdos curtos · Diferentes formatos para diferentes objetivos</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 7 — Produção com IA</h3>
+            <p>Roteiros · Legendas · Adaptação de ideias · Como produzir conteúdo de forma mais rápida</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 8 — Consistência</h3>
+            <p>Como criar uma rotina sustentável · Como organizar ideias · Como produzir conteúdo sem depender de inspiração · Como transformar criação de conteúdo em um processo</p>
+          </div>
+        </div>
+
+        <div class="early-access-callout">
+          <span class="module-tag available">Entrada antecipada</span>
+          <p>Você está entre os primeiros alunos.</p>
+          <p class="early-price">Condição beta: <strong>R$67</strong></p>
+        </div>
+      </div>
+
+      <p class="beta-note">Você está entrando na versão beta. Alguns módulos ainda estão em produção e serão liberados progressivamente. Quem entra agora garante a condição especial de R$67 e acompanha a evolução do método.</p>
+    </div>
+  </section>
+
   <section id="conteudo">
     <div class="wrap">
       <div class="section-label">O que você vai aprender</div>
@@ -547,9 +724,27 @@
     </div>
   </section>
 
+  <section id="quem-esta-por-tras">
+    <div class="wrap">
+      <div class="section-label">Quem está por trás do Sistema Conteúdo Inteligente?</div>
+      <div class="founder-card">
+        <div class="founder-photo">
+          <img src="assets/renato-slezinski.jpg" alt="Renato Slezinski Jr., criador do Sistema Conteúdo Inteligente" width="809" height="924" loading="lazy" decoding="async">
+        </div>
+        <div class="founder-copy">
+          <div class="creator-name">Renato Slezinski Jr.</div>
+          <p>Estou construindo uma operação de produtos digitais utilizando inteligência artificial para tornar a criação de conteúdo mais simples e prática.</p>
+          <p>O Sistema Conteúdo Inteligente nasceu da ideia de ajudar pequenos negócios e profissionais que sabem que precisam criar conteúdo, mas travam na hora de decidir o que postar ou não sabem como aproveitar melhor a IA.</p>
+          <p class="founder-closing">Você está entrando justamente na primeira turma do projeto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="oferta">
     <div class="wrap">
       <div class="section-label">Oferta beta</div>
+      <p class="lead">Se você quer começar agora, esta é a melhor condição para entrar no Sistema Conteúdo Inteligente.</p>
       <div class="offer-card">
         <h2>Entre na primeira turma</h2>
         <div class="price-row">
