@@ -132,6 +132,7 @@
     margin: 48px auto 0;
     padding: 6% 4% 0;
   }
+  .showcase-glow.reels-glow { max-width: 960px; }
   .showcase-glow::before {
     content: "";
     position: absolute;
@@ -211,41 +212,6 @@
   .step-card h3 { font-size: 1rem; margin-bottom: 8px; }
   .step-card p { color: var(--ink-muted); font-size: 0.88rem; }
 
-  /* Screenshot placeholders grid */
-  .demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
-  .demo-item .media-placeholder { aspect-ratio: 4 / 3; padding: 24px 18px; }
-  .demo-shot {
-    display: flex; align-items: center; justify-content: center;
-  }
-  .demo-shot img {
-    width: 100%; height: auto; display: block;
-    border-radius: 10px;
-    filter: drop-shadow(0 14px 28px rgba(0,0,0,0.4));
-  }
-  .demo-item .demo-caption { margin-top: 14px; }
-  .demo-item .demo-caption .t { font-weight: 700; font-size: 0.95rem; color: var(--ink); }
-  .demo-item .demo-caption .s { font-size: 0.85rem; color: var(--ink-muted); margin-top: 4px; }
-
-  /* Browser mockup (members area) */
-  .browser-mockup {
-    border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
-    background: var(--bg-elevated); max-width: 780px; margin: 32px auto 0;
-  }
-  .browser-mockup .bar {
-    display: flex; align-items: center; gap: 8px; padding: 12px 16px;
-    background: var(--bg-elevated-2); border-bottom: 1px solid var(--line);
-  }
-  .browser-mockup .bar .dots { display: flex; gap: 6px; }
-  .browser-mockup .bar .dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
-  .browser-mockup .bar .url {
-    flex: 1; background: var(--bg); border-radius: 6px; padding: 5px 12px;
-    font-size: 0.78rem; color: var(--ink-faint); font-family: ui-monospace, monospace;
-  }
-  .browser-mockup .content {
-    display: flex; align-items: center; justify-content: center; line-height: 0;
-  }
-  .browser-mockup .content img { width: 100%; height: auto; display: block; }
-  .browser-mockup .content .media-placeholder { border: none; border-radius: 0; height: 100%; }
 
   /* Value checklist */
   .check-list { display: flex; flex-direction: column; gap: 14px; max-width: 560px; }
@@ -353,7 +319,6 @@
 
   @media (max-width: 780px) {
     .steps-grid { grid-template-columns: 1fr 1fr; }
-    .demo-grid { grid-template-columns: 1fr; }
     .story-card { grid-template-columns: 1fr; }
     .story-photo { max-width: 260px; margin: 0 auto; }
   }
@@ -394,6 +359,17 @@
     </div>
   </header>
 
+  <!-- MEUS CONTEÚDOS -->
+  <section id="meus-conteudos">
+    <div class="wrap product-showcase">
+      <h2>Conteúdo não precisa começar do zero.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Eu comecei a testar formas mais simples de transformar ideias, conhecimento e situações do dia a dia em conteúdo.</p>
+      <div class="showcase-glow reels-glow">
+        <img src="assets/meus-reels.webp" alt="Quatro Reels reais publicados por Renato Slezinski Jr." width="1400" height="933" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
   <!-- 2. VÍDEO -->
   <section id="video">
     <div class="wrap">
@@ -403,17 +379,6 @@
         </div>
         <div class="ph-title">Vídeo de apresentação</div>
         <div class="ph-sub">Renato explicando o método em pouco menos de 2 minutos — em breve.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VISUAL DO PRODUTO -->
-  <section id="visual-produto">
-    <div class="wrap product-showcase">
-      <h2>Veja o que acontece quando a IA realmente entende o seu negócio.</h2>
-      <p class="lead" style="margin-left:auto;margin-right:auto;">O Sistema Conteúdo Inteligente transforma o conhecimento que você já tem sobre o seu negócio em contexto para a IA — e usa esse contexto para ajudar você a criar conteúdos mais específicos e úteis.</p>
-      <div class="showcase-glow">
-        <img src="assets/demo-assistente.webp" alt="Conversa com o Assistente Estratégico de Conteúdo" width="1000" height="667" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -548,25 +513,26 @@
     </div>
   </section>
 
-  <!-- 9. DEMONSTRAÇÃO -->
-  <section id="demonstracao">
-    <div class="wrap">
-      <div class="section-label">Por dentro do método</div>
-      <h2>Veja o que existe por trás do método.</h2>
+  <!-- ASSISTENTE ESTRATÉGICO -->
+  <section id="visual-produto">
+    <div class="wrap product-showcase">
+      <div class="section-label">O mecanismo</div>
+      <h2>Veja o que acontece quando a IA realmente entende o seu negócio.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">O Sistema Conteúdo Inteligente transforma o conhecimento que você já tem sobre o seu negócio em contexto para a IA — e usa esse contexto para ajudar você a criar conteúdos mais específicos e úteis.</p>
+      <div class="showcase-glow">
+        <img src="assets/demo-assistente.webp" alt="Conversa com o Assistente Estratégico de Conteúdo" width="1000" height="667" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
 
-      <div class="demo-grid">
-        <div class="demo-item">
-          <div class="demo-shot"><img src="assets/demo-perfil-mestre.webp" alt="Tela do Perfil Mestre do Negócio" width="1000" height="667" loading="lazy" decoding="async"></div>
-          <div class="demo-caption"><div class="t">Perfil Mestre do Negócio</div><div class="s">O contexto que organiza as informações mais importantes sobre sua empresa.</div></div>
-        </div>
-        <div class="demo-item">
-          <div class="demo-shot"><img src="assets/demo-assistente.webp" alt="Conversa com o Assistente Estratégico de Conteúdo" width="1000" height="667" loading="lazy" decoding="async"></div>
-          <div class="demo-caption"><div class="t">Assistente Estratégico</div><div class="s">A conversa que ajuda a IA a entender a realidade do seu negócio.</div></div>
-        </div>
-        <div class="demo-item">
-          <div class="demo-shot"><img src="assets/demo-area-membros.jpg" alt="Área de membros do Sistema Conteúdo Inteligente" width="1100" height="733" loading="lazy" decoding="async"></div>
-          <div class="demo-caption"><div class="t">Área de membros</div><div class="s">É aqui que você acompanha as aulas e evolui pelo método.</div></div>
-        </div>
+  <!-- PERFIL MESTRE -->
+  <section id="perfil-mestre-visual">
+    <div class="wrap product-showcase">
+      <div class="section-label">O contexto</div>
+      <h2>Tudo o que a IA aprende sobre o seu negócio, organizado num só lugar.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Depois da conversa com o Assistente, essas informações viram o seu Perfil Mestre — a base que o sistema usa para criar conteúdos com contexto de verdade.</p>
+      <div class="showcase-glow">
+        <img src="assets/demo-perfil-mestre.webp" alt="Tela do Perfil Mestre do Negócio" width="1000" height="667" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -578,14 +544,10 @@
       <h2>Você não está comprando apenas uma ideia.</h2>
       <p class="lead">Você terá acesso a uma área de membros organizada para acompanhar o método e os novos conteúdos conforme forem liberados.</p>
 
-      <div class="browser-mockup">
-        <div class="bar">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <div class="url">área de membros — Qify</div>
-        </div>
-        <div class="content">
-          <img src="assets/demo-area-membros.jpg" alt="Área de membros do Sistema Conteúdo Inteligente" width="1100" height="733" loading="lazy" decoding="async">
-        </div>
+      <div class="media-placeholder">
+        <div class="ph-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="ph-title">Print real da área de membros</div>
+        <div class="ph-sub">Será adicionado aqui assim que a área estiver pronta na Qify.</div>
       </div>
     </div>
   </section>
