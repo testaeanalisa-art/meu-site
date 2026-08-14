@@ -122,6 +122,34 @@
   .video-slot { aspect-ratio: 16 / 9; max-width: 720px; margin: 0 auto; }
   .caption-under { text-align: center; color: var(--ink-faint); font-size: 0.85rem; margin-top: 14px; }
 
+  /* Product showcase (visual do produto) */
+  .product-showcase { text-align: center; }
+  .product-showcase h2 { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .product-showcase .lead { margin-bottom: 0; }
+  .showcase-glow {
+    position: relative;
+    max-width: 820px;
+    margin: 48px auto 0;
+    padding: 6% 4% 0;
+  }
+  .showcase-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0% 4% 8%;
+    background: radial-gradient(60% 60% at 50% 30%, rgba(47, 92, 255, 0.28), transparent 72%);
+    filter: blur(20px);
+    z-index: 0;
+  }
+  .showcase-glow img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    box-shadow: 0 34px 80px rgba(0, 0, 0, 0.5);
+  }
+
   /* Quote highlight */
   .quote-highlight {
     background: var(--bg-elevated);
@@ -379,6 +407,17 @@
         </div>
         <div class="ph-title">Vídeo de apresentação</div>
         <div class="ph-sub">Renato explicando o método em pouco menos de 2 minutos — em breve.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL DO PRODUTO -->
+  <section id="visual-produto">
+    <div class="wrap product-showcase">
+      <h2>Veja o que acontece quando a IA realmente entende o seu negócio.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">O Sistema Conteúdo Inteligente transforma o conhecimento que você já tem sobre o seu negócio em contexto para a IA — e usa esse contexto para ajudar você a criar conteúdos mais específicos e úteis.</p>
+      <div class="showcase-glow">
+        <img src="assets/demo-assistente.jpg" alt="Conversa com o Assistente Estratégico de Conteúdo" width="850" height="566" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
