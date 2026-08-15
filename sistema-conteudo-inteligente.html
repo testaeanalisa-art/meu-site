@@ -119,7 +119,35 @@
   .media-placeholder .ph-title { color: var(--ink); font-weight: 700; font-size: 0.98rem; }
   .media-placeholder .ph-sub { font-size: 0.85rem; color: var(--ink-faint); max-width: 320px; }
 
-  .video-slot { aspect-ratio: 16 / 9; max-width: 720px; margin: 0 auto; }
+  .video-slot { position: relative; aspect-ratio: 16 / 9; max-width: 720px; margin: 0 auto; }
+  .video-player {
+    position: absolute; inset: 0;
+    border-radius: 18px; overflow: hidden;
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .video-player video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+  .video-close {
+    display: none;
+    position: absolute; top: 8px; right: 8px; z-index: 2;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(5,7,10,0.75); color: var(--ink);
+    border: 1px solid var(--line);
+    align-items: center; justify-content: center;
+    font-size: 0.8rem; cursor: pointer; line-height: 1;
+  }
+  .video-player.is-docked {
+    position: fixed; inset: auto; top: auto; left: auto;
+    bottom: 20px; right: 20px;
+    width: 240px; aspect-ratio: 16 / 9;
+    z-index: 999;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  }
+  .video-player.is-docked .video-close { display: flex; }
+  .video-player.is-hidden { display: none; }
+  @media (max-width: 640px) {
+    .video-player.is-docked { width: 150px; bottom: 14px; right: 14px; }
+  }
   .caption-under { text-align: center; color: var(--ink-faint); font-size: 0.85rem; margin-top: 14px; }
 
   /* Product showcase (visual do produto) */
@@ -374,12 +402,19 @@
   <!-- 2. VÍDEO -->
   <section id="video">
     <div class="wrap">
-      <div class="media-placeholder video-slot">
-        <div class="ph-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <div class="video-slot" id="video-spacer">
+        <div class="video-player" id="video-player">
+          <video
+            id="apresentacao-video"
+            src="assets/video-apresentacao.mp4"
+            poster="assets/video-poster.jpg"
+            playsinline
+            muted
+            controls
+            preload="metadata"
+          ></video>
+          <button type="button" class="video-close" id="video-close" aria-label="Fechar vídeo">✕</button>
         </div>
-        <div class="ph-title">Vídeo de apresentação</div>
-        <div class="ph-sub">Renato explicando o método em pouco menos de 2 minutos — em breve.</div>
       </div>
     </div>
   </section>
@@ -802,6 +837,40 @@
           }
         });
       });
+    })();
+
+    (function () {
+      var spacer = document.getElementById('video-spacer');
+      var player = document.getElementById('video-player');
+      var video = document.getElementById('apresentacao-video');
+      var closeBtn = document.getElementById('video-close');
+      if (!spacer || !player || !video) return;
+
+      var closedByUser = false;
+
+      closeBtn.addEventListener('click', function () {
+        closedByUser = true;
+        player.classList.add('is-hidden');
+        video.pause();
+      });
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              player.classList.remove('is-docked');
+              if (!closedByUser) {
+                player.classList.remove('is-hidden');
+              }
+              var playPromise = video.play();
+              if (playPromise) { playPromise.catch(function () {}); }
+            } else if (entry.boundingClientRect.top < 0) {
+              player.classList.add('is-docked');
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(spacer);
+      }
     })();
   </script>
 
