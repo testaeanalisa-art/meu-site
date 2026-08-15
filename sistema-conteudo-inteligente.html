@@ -93,7 +93,6 @@
   }
   .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(47, 92, 255, 0.35); }
-  .checkout-status { margin-top: 14px; font-size: 0.86rem; color: var(--accent-2); min-height: 1.2em; }
 
   /* Hero */
   .hero { padding-top: 88px; padding-bottom: 56px; text-align: center; }
@@ -315,10 +314,19 @@
   .offer-card .offer-note { color: var(--ink-muted); font-size: 0.94rem; max-width: 480px; margin: 0 auto 28px; }
 
   /* Guarantee */
-  .guarantee-box {
-    border: 1px dashed var(--line); border-radius: 14px; padding: 22px 24px;
-    color: var(--ink-muted); font-size: 0.92rem; max-width: 560px;
+  .guarantee-seal {
+    display: flex; align-items: center; gap: 20px;
+    max-width: 560px; margin: 0 auto;
+    background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 16px;
+    padding: 24px 28px;
   }
+  .guarantee-icon {
+    flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent-2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .guarantee-title { font-weight: 800; font-size: 0.98rem; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 6px; }
+  .guarantee-text p { color: var(--ink-muted); font-size: 0.9rem; }
 
   /* FAQ */
   details.faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
@@ -364,6 +372,7 @@
     .offer-card .price-new { font-size: 2.4rem; }
     .beta-banner { flex-direction: column; align-items: stretch; text-align: center; }
     .beta-banner .price-block { align-items: center; }
+    .guarantee-seal { flex-direction: column; text-align: center; padding: 24px 20px; }
     .btn { width: 100%; }
   }
 </style>
@@ -381,9 +390,9 @@
   <header class="hero">
     <div class="wrap">
       <span class="eyebrow">Primeira turma · Versão beta</span>
-      <h1>Você não precisa de mais inspiração.<br>Precisa de um sistema.</h1>
-      <p class="lead">Aprenda a usar a inteligência artificial para transformar o conhecimento que você já tem sobre o seu negócio em ideias e conteúdos que você consegue realmente produzir e manter.</p>
-      <a class="btn btn-primary" href="#oferta">Quero entrar no Sistema Conteúdo Inteligente</a>
+      <h1>Crie conteúdo para o seu negócio em poucos minutos, mesmo sem saber o que postar.</h1>
+      <p class="lead">Aprenda a utilizar a inteligência artificial para transformar o conhecimento que você já tem sobre o seu negócio em ideias e conteúdos que você consegue produzir e manter.</p>
+      <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar no Sistema Conteúdo Inteligente</a>
       <p class="hero-note">Primeira turma • Condição especial de lançamento</p>
     </div>
   </header>
@@ -573,21 +582,6 @@
     </div>
   </section>
 
-  <!-- 10. ÁREA DE MEMBROS -->
-  <section id="area-membros">
-    <div class="wrap">
-      <div class="section-label">Área de membros</div>
-      <h2>Você não está comprando apenas uma ideia.</h2>
-      <p class="lead">Você terá acesso a uma área de membros organizada para acompanhar o método e os novos conteúdos conforme forem liberados.</p>
-
-      <div class="media-placeholder">
-        <div class="ph-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <div class="ph-title">Print real da área de membros</div>
-        <div class="ph-sub">Será adicionado aqui assim que a área estiver pronta na Qify.</div>
-      </div>
-    </div>
-  </section>
-
   <!-- 11. O QUE VOCÊ RECEBE -->
   <section id="modulos">
     <div class="wrap">
@@ -673,8 +667,7 @@
         </div>
         <div class="price-block">
           <div class="price-row"><span class="price-old">R$197</span><span class="price-new">R$67</span></div>
-          <button type="button" class="btn btn-primary" data-checkout-pending>Quero entrar por R$67</button>
-          <p class="checkout-status" data-checkout-message></p>
+          <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar por R$67</a>
         </div>
       </div>
     </div>
@@ -740,8 +733,7 @@
           <span class="price-new">R$67</span>
         </div>
         <p class="offer-note">R$67 é a condição especial de entrada da versão beta — o valor de R$197 é o preço planejado após esse período.</p>
-        <button type="button" class="btn btn-primary" data-checkout-pending>Quero entrar por R$67</button>
-        <p class="checkout-status" data-checkout-message></p>
+        <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar por R$67</a>
       </div>
     </div>
   </section>
@@ -749,9 +741,14 @@
   <!-- 17. GARANTIA -->
   <section id="garantia">
     <div class="wrap">
-      <div class="section-label">Garantia</div>
-      <div class="guarantee-box">
-        Política de garantia em definição — será apresentada na página de pagamento antes da confirmação da compra.
+      <div class="guarantee-seal">
+        <div class="guarantee-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="guarantee-text">
+          <div class="guarantee-title">7 DIAS DE GARANTIA</div>
+          <p>Você pode testar o Sistema Conteúdo Inteligente por 7 dias. Se decidir que não é para você, solicite o reembolso dentro do prazo de garantia.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -807,8 +804,7 @@
     <div class="wrap">
       <h2>Pare de começar do zero.</h2>
       <p class="lead" style="margin-left:auto;margin-right:auto;">Você já sabe o que faz. Já conhece seu negócio. Agora precisa de um processo para transformar esse conhecimento em conteúdo.</p>
-      <button type="button" class="btn btn-primary" data-checkout-pending>Quero entrar no Sistema Conteúdo Inteligente</button>
-      <p class="checkout-status" data-checkout-message></p>
+      <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar no Sistema Conteúdo Inteligente</a>
       <p class="price-tag">Primeira turma • R$67</p>
     </div>
   </section>
@@ -826,19 +822,6 @@
   </footer>
 
   <script>
-    (function () {
-      var buttons = document.querySelectorAll('[data-checkout-pending]');
-      buttons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var container = btn.closest('.offer-card') || btn.closest('.price-block') || btn.parentElement;
-          var msg = container.querySelector('[data-checkout-message]');
-          if (msg) {
-            msg.textContent = 'Checkout em configuração — volte em instantes para garantir sua vaga.';
-          }
-        });
-      });
-    })();
-
     (function () {
       var spacer = document.getElementById('video-spacer');
       var player = document.getElementById('video-player');
