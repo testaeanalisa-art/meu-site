@@ -392,7 +392,7 @@
       <span class="eyebrow">Primeira turma · Versão beta</span>
       <h1>Crie conteúdo para o seu negócio em poucos minutos, mesmo sem saber o que postar.</h1>
       <p class="lead">Aprenda a utilizar a inteligência artificial para transformar o conhecimento que você já tem sobre o seu negócio em ideias e conteúdos que você consegue produzir e manter.</p>
-      <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar no Sistema Conteúdo Inteligente</a>
+      <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS" data-track="clique_comprar_hero">Quero entrar no Sistema Conteúdo Inteligente</a>
       <p class="hero-note">Primeira turma • Condição especial de lançamento</p>
     </div>
   </header>
@@ -667,7 +667,7 @@
         </div>
         <div class="price-block">
           <div class="price-row"><span class="price-old">R$197</span><span class="price-new">R$67</span></div>
-          <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar por R$67</a>
+          <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS" data-track="clique_comprar_versao_beta">Quero entrar por R$67</a>
         </div>
       </div>
     </div>
@@ -733,7 +733,7 @@
           <span class="price-new">R$67</span>
         </div>
         <p class="offer-note">R$67 é a condição especial de entrada da versão beta — o valor de R$197 é o preço planejado após esse período.</p>
-        <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar por R$67</a>
+        <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS" data-track="clique_comprar_oferta">Quero entrar por R$67</a>
       </div>
     </div>
   </section>
@@ -804,7 +804,7 @@
     <div class="wrap">
       <h2>Pare de começar do zero.</h2>
       <p class="lead" style="margin-left:auto;margin-right:auto;">Você já sabe o que faz. Já conhece seu negócio. Agora precisa de um processo para transformar esse conhecimento em conteúdo.</p>
-      <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS">Quero entrar no Sistema Conteúdo Inteligente</a>
+      <a class="btn btn-primary" href="https://pay.kiwify.com.br/RXOnCZS" data-track="clique_comprar_final">Quero entrar no Sistema Conteúdo Inteligente</a>
       <p class="price-tag">Primeira turma • R$67</p>
     </div>
   </section>
@@ -813,7 +813,7 @@
     <div class="wrap">
       <p>Dúvidas antes de entrar? Fale direto comigo.</p>
       <div class="footer-contacts">
-        <a class="contact-link" href="https://wa.me/353838961258" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="contact-link" href="https://wa.me/353838961258" target="_blank" rel="noopener" data-track="clique_whatsapp">WhatsApp</a>
         <a class="contact-link" href="mailto:testaeanalisa@gmail.com">E-mail</a>
         <a class="contact-link" href="/">Página inicial</a>
       </div>
@@ -858,6 +858,13 @@
   </script>
 
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    document.addEventListener('click', function (event) {
+      var el = event.target.closest('[data-track]');
+      if (!el || !window.va) return;
+      window.va('event', { name: el.getAttribute('data-track') });
+    });
+  </script>
 
 </body>
 </html>
