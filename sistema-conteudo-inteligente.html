@@ -864,6 +864,65 @@
       if (!el || !window.va) return;
       window.va('event', { name: el.getAttribute('data-track') });
     });
+
+    (function () {
+      function track(name, props) {
+        if (!window.va) return;
+        window.va('event', Object.assign({ name: name }, props || {}));
+      }
+
+      // Até onde a página é rolada
+      var scrollMarks = [25, 50, 75, 100];
+      var scrollFired = {};
+      window.addEventListener('scroll', function () {
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) return;
+        var scrolled = (window.scrollY / docHeight) * 100;
+        scrollMarks.forEach(function (mark) {
+          if (scrolled >= mark && !scrollFired[mark]) {
+            scrollFired[mark] = true;
+            track('rolagem_' + mark + 'pct');
+          }
+        });
+      }, { passive: true });
+
+      // Tempo na página
+      [30, 60, 120, 300].forEach(function (seconds) {
+        setTimeout(function () { track('tempo_' + seconds + 's'); }, seconds * 1000);
+      });
+
+      // Quanto do vídeo é assistido
+      var video = document.getElementById('apresentacao-video');
+      if (video) {
+        var videoFired = {};
+        video.addEventListener('timeupdate', function () {
+          if (!video.duration) return;
+          var pct = (video.currentTime / video.duration) * 100;
+          [25, 50, 75].forEach(function (mark) {
+            if (pct >= mark && !videoFired[mark]) {
+              videoFired[mark] = true;
+              track('video_' + mark + 'pct');
+            }
+          });
+        });
+        video.addEventListener('ended', function () {
+          if (!videoFired[100]) {
+            videoFired[100] = true;
+            track('video_100pct');
+          }
+        });
+      }
+
+      // Quais perguntas do FAQ são abertas
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        item.addEventListener('toggle', function () {
+          if (item.open) {
+            var q = item.querySelector('summary');
+            track('faq_aberto', { pergunta: q ? q.textContent.trim() : '' });
+          }
+        });
+      });
+    })();
   </script>
 
 </body>
