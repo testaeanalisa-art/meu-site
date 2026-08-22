@@ -14,7 +14,24 @@
 <!-- og:image: adicionar depois de gerar uma imagem de compartilhamento real -->
 
 <!-- Local reservado para o Google Analytics, quando o ID for fornecido -->
-<!-- Local reservado para o Meta Pixel, quando o ID for fornecido -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1634578338233107');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1634578338233107&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305070A'/%3E%3Cpath d='M28 30h44M28 50h30M28 70h44' stroke='%232F5CFF' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
 
@@ -828,8 +845,14 @@
   <script>
     document.addEventListener('click', function (event) {
       var el = event.target.closest('[data-track]');
-      if (!el || !window.va) return;
-      window.va('event', { name: el.getAttribute('data-track') });
+      if (!el) return;
+      var trackName = el.getAttribute('data-track');
+      if (window.va) {
+        window.va('event', { name: trackName });
+      }
+      if (window.fbq && trackName.indexOf('clique_grupo') === 0) {
+        window.fbq('track', 'Lead');
+      }
     });
 
     (function () {
