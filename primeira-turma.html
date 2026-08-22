@@ -30,6 +30,7 @@
     --accent: #2F5CFF;
     --accent-2: #6C8CFF;
     --accent-soft: rgba(47, 92, 255, 0.14);
+    --price-strike: #6B7480;
     --max-width: 900px;
   }
 
@@ -97,13 +98,36 @@
   .hero { padding-top: 88px; padding-bottom: 24px; text-align: center; }
   .hero .wrap { display: flex; flex-direction: column; align-items: center; }
   .hero p.lead { margin: 0 auto 14px; }
-  .hero .lead-strong { color: var(--ink); font-weight: 700; margin: 6px auto 34px; }
+  .hero .lead-strong { color: var(--ink); font-weight: 700; margin: 6px auto 0; }
+
+  /* Small problem intro right before the video */
+  #problema-intro { border-top: none; padding: 32px 0 8px; text-align: center; }
+  #problema-intro p.lead { margin: 0 auto; }
 
   /* Video is a visual continuation of the Hero, not a new section */
   #video { border-top: none; padding-top: 8px; }
 
+  /* Media placeholders */
+  .media-placeholder {
+    border: 1.5px dashed var(--line);
+    border-radius: 18px;
+    background: var(--bg-elevated);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    color: var(--ink-faint);
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .media-placeholder .ph-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent-2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .media-placeholder .ph-title { color: var(--ink); font-weight: 700; font-size: 0.98rem; }
+  .media-placeholder .ph-sub { font-size: 0.85rem; color: var(--ink-faint); max-width: 320px; }
+
   .video-caption { text-align: center; color: var(--ink-muted); font-size: 1rem; max-width: 560px; margin: 0 auto 24px; }
   .video-slot { position: relative; aspect-ratio: 16 / 9; max-width: 720px; margin: 0 auto; }
+  .video-cta { text-align: center; margin-top: 28px; }
   .video-player {
     position: absolute; inset: 0;
     border-radius: 18px; overflow: hidden;
@@ -132,8 +156,9 @@
   @media (max-width: 640px) {
     .video-player.is-docked { width: 150px; bottom: 14px; right: 14px; }
   }
+  .caption-under { text-align: center; color: var(--ink-faint); font-size: 0.85rem; margin-top: 14px; }
 
-  /* Product showcase */
+  /* Product showcase (visual do produto) */
   .product-showcase { text-align: center; }
   .product-showcase h2 { max-width: 640px; margin-left: auto; margin-right: auto; }
   .product-showcase .lead { margin-bottom: 0; }
@@ -182,39 +207,50 @@
   .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
   .pain-card {
     background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 16px;
-    padding: 22px 24px; display: flex; gap: 16px; align-items: center;
+    padding: 24px 24px; display: flex; gap: 16px; align-items: flex-start;
   }
   .pain-card .pain-icon {
     flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px;
     background: var(--accent-soft); color: var(--accent-2);
     display: flex; align-items: center; justify-content: center;
   }
-  .pain-card p { color: var(--ink); font-size: 0.96rem; font-weight: 600; }
+  .pain-card h3 { margin-bottom: 6px; font-size: 0.98rem; }
+  .pain-card p { color: var(--ink-muted); font-size: 0.9rem; }
   .pain-card.span-2 { grid-column: span 2; }
 
-  /* Simple mechanism flow */
-  .simple-flow { display: flex; flex-direction: column; gap: 0; max-width: 420px; margin: 32px auto 0; }
-  .flow-step { display: flex; align-items: center; gap: 16px; padding: 13px 0; }
-  .flow-step .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .flow-step span.label { font-weight: 700; font-size: 0.98rem; }
-  .flow-connector { width: 1px; height: 20px; background: var(--line); margin-left: 5px; }
-  .flow-step.final .dot { background: var(--accent-2); box-shadow: 0 0 0 5px var(--accent-soft); }
-  .flow-step.final span.label { color: var(--accent-2); }
-
   /* Story */
-  .story-card { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
-  .story-photo { display: flex; align-items: flex-end; justify-content: center; }
+  .story-card {
+    display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start;
+  }
+  .story-photo {
+    display: flex; align-items: flex-end; justify-content: center;
+  }
   .story-photo img {
     width: 100%; height: auto; display: block;
     filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.5));
   }
   .story-text p { color: var(--ink-muted); font-size: 1rem; margin-bottom: 14px; max-width: 60ch; }
+  .story-text p.tight { margin-bottom: 4px; }
   .story-signature { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
   .story-signature .name { font-weight: 800; font-size: 1.05rem; }
   .story-signature .role { color: var(--ink-faint); font-size: 0.88rem; margin-top: 2px; }
 
-  /* Check list */
-  .check-list { display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin-top: 32px; }
+  /* Infographic */
+  .infographic-frame {
+    max-width: 420px; margin: 40px auto 0; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .infographic-frame img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+  /* Steps grid (how it works) */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 32px; }
+  .step-card { background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 16px; padding: 24px 22px; }
+  .step-card .num { font-family: ui-monospace, "SF Mono", Consolas, monospace; color: var(--accent-2); font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; }
+  .step-card h3 { font-size: 1rem; margin-bottom: 8px; }
+  .step-card p { color: var(--ink-muted); font-size: 0.88rem; }
+
+  /* Value checklist */
+  .check-list { display: flex; flex-direction: column; gap: 14px; max-width: 560px; }
   .check-item { display: flex; gap: 12px; align-items: flex-start; }
   .check-item .mark {
     flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px;
@@ -223,14 +259,65 @@
     font-size: 0.75rem; font-weight: 700; margin-top: 2px;
   }
   .check-item p { color: var(--ink); font-size: 0.98rem; }
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; max-width: 720px; }
 
-  /* Primeira turma callout */
-  .callout-box {
-    background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 16px;
-    padding: 24px 26px; margin-top: 28px; max-width: 640px;
+  /* Convite banner (era "beta teaser banner") */
+  .beta-banner {
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-elevated-2));
+    border: 1px solid rgba(47, 92, 255, 0.3);
+    border-radius: 20px;
+    padding: 36px 32px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
   }
-  .callout-box p { color: var(--ink-muted); font-size: 0.95rem; }
-  .callout-box p + p { margin-top: 10px; }
+  .beta-banner .copy { max-width: 440px; }
+  .beta-banner .copy p { color: var(--ink-muted); font-size: 0.95rem; margin-top: 8px; }
+  .beta-banner .price-block { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .price-row { display: flex; align-items: baseline; gap: 14px; }
+  .price-old { font-size: 1.15rem; color: var(--price-strike); text-decoration: line-through; }
+  .price-new { font-size: 2.2rem; font-weight: 800; color: var(--ink); }
+
+  /* Modules */
+  .module-group { margin-top: 40px; }
+  .module-group-label { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+  .module-group-label.available { color: var(--accent-2); }
+  .module-group-label.locked { color: var(--ink-faint); }
+  .module-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .module-card { border-radius: 14px; padding: 22px 24px; border: 1px solid var(--line); }
+  .module-card.available { background: var(--accent-soft); border-color: rgba(47, 92, 255, 0.3); }
+  .module-card.locked { background: var(--bg-elevated); }
+  .module-tag {
+    display: inline-flex; align-items: center; gap: 4px; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
+  }
+  .module-tag.available { background: var(--accent); color: #fff; }
+  .module-tag.locked { background: var(--bg-elevated-2); color: var(--ink-faint); border: 1px solid var(--line); }
+  .module-card h3 { font-size: 0.98rem; margin-bottom: 10px; }
+  .module-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .module-card li { font-size: 0.86rem; color: var(--ink-muted); padding-left: 16px; position: relative; }
+  .module-card.available li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-2); }
+  .module-card.locked p { font-size: 0.84rem; color: var(--ink-faint); line-height: 1.55; }
+  .beta-note {
+    margin-top: 28px; color: var(--ink-muted); font-size: 0.92rem; max-width: 560px;
+    border-left: 2px solid var(--accent); padding-left: 16px;
+  }
+
+  /* For who / not for who */
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .fit-card { border-radius: 16px; padding: 28px 26px; border: 1px solid var(--line); }
+  .fit-card.yes { background: var(--accent-soft); border-color: rgba(47,92,255,0.25); }
+  .fit-card.no { background: var(--bg-elevated); }
+  .fit-card h3 { margin-bottom: 16px; }
+  .fit-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .fit-card li { font-size: 0.92rem; color: var(--ink-muted); padding-left: 20px; position: relative; }
+  .fit-card.yes li::before { content: "+"; position: absolute; left: 0; color: var(--accent-2); font-weight: 700; }
+  .fit-card.no li::before { content: "–"; position: absolute; left: 0; color: var(--ink-faint); font-weight: 700; }
+
+  /* Offer / convite card */
+  .offer-card {
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-elevated-2));
+    border: 1px solid rgba(47,92,255,0.3); border-radius: 22px; padding: 44px 36px; text-align: center;
+  }
+  .offer-card .offer-note { color: var(--ink-muted); font-size: 0.94rem; max-width: 480px; margin: 0 auto 28px; }
 
   /* FAQ */
   details.faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
@@ -259,6 +346,7 @@
   footer .copyright { margin-top: 32px; font-size: 0.8rem; color: var(--ink-faint); }
 
   @media (max-width: 780px) {
+    .steps-grid { grid-template-columns: 1fr 1fr; }
     .story-card { grid-template-columns: 1fr; }
     .story-photo { max-width: 260px; margin: 0 auto; }
   }
@@ -266,7 +354,14 @@
   @media (max-width: 640px) {
     .pain-grid { grid-template-columns: 1fr; }
     .pain-card.span-2 { grid-column: span 1; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .module-grid { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+    .fit-grid { grid-template-columns: 1fr; }
     section { padding: 52px 0; }
+    .offer-card { padding: 32px 22px; }
+    .beta-banner { flex-direction: column; align-items: stretch; text-align: center; }
+    .beta-banner .price-block { align-items: center; }
     .btn { width: 100%; }
   }
 </style>
@@ -283,75 +378,23 @@
   <!-- 1. HERO -->
   <header class="hero">
     <div class="wrap">
-      <span class="eyebrow">Apresentação · Primeira Turma</span>
       <h1>Descubra como transformar o conhecimento do seu negócio em conteúdo usando IA</h1>
       <p class="lead">Durante os próximos dias, vou apresentar o Sistema Conteúdo Inteligente, explicar como funciona o método e mostrar por que ele é diferente de simplesmente pedir ideias ao ChatGPT.</p>
       <p class="lead lead-strong">No final, vou abrir uma condição especial de lançamento exclusivamente para quem estiver no grupo.</p>
-      <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_hero">QUERO ENTRAR NO GRUPO</a>
     </div>
   </header>
 
-  <!-- 2. IDENTIFICAÇÃO COM O PROBLEMA -->
-  <section id="problema">
+  <!-- PEQUENA IDENTIFICAÇÃO COM O PROBLEMA -->
+  <section id="problema-intro">
     <div class="wrap">
-      <div class="section-label">O problema</div>
-      <h2>Você não está sem conhecimento. O problema é transformar esse conhecimento em conteúdo.</h2>
-
-      <div class="pain-grid">
-        <div class="pain-card">
-          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></div>
-          <p>Você sabe muito sobre seu negócio, mas não sabe o que postar.</p>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div>
-          <p>Abre o ChatGPT e recebe ideias genéricas.</p>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <p>Passa muito tempo pensando em conteúdo.</p>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 1 1 3 6.2M4 12v5h5"/></svg></div>
-          <p>Começa a produzir e depois para.</p>
-        </div>
-        <div class="pain-card span-2">
-          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M6 9l6 6 6-6"/><path d="M4 19h16"/></svg></div>
-          <p>Sente que deveria publicar mais, mas não consegue manter uma rotina.</p>
-        </div>
-      </div>
+      <p class="lead">Você sabe que precisa criar conteúdo. O problema é conseguir manter.</p>
     </div>
   </section>
 
-  <!-- 3. EXPLICAÇÃO DA OPORTUNIDADE -->
-  <section id="oportunidade">
-    <div class="wrap">
-      <div class="section-label">A oportunidade</div>
-      <h2>Seu negócio já tem conteúdo. Você só precisa aprender a encontrá-lo.</h2>
-      <p class="lead">O conhecimento que você já tem sobre o seu negócio — sobre seus clientes, seu mercado, o que você resolve todos os dias — pode virar ideias, roteiros, posts, vídeos e conteúdos prontos para publicar. Falta só um processo para transformar isso.</p>
-    </div>
-  </section>
-
-  <!-- 4. COMO O SISTEMA FUNCIONA -->
-  <section id="mecanismo">
-    <div class="wrap">
-      <div class="section-label">O mecanismo</div>
-      <h2>O Sistema Conteúdo Inteligente foi criado para organizar esse processo.</h2>
-      <div class="simple-flow">
-        <div class="flow-step"><span class="dot"></span><span class="label">Conhecimento do negócio</span></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><span class="dot"></span><span class="label">A IA entende o negócio</span></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><span class="dot"></span><span class="label">Ideias</span></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step final"><span class="dot"></span><span class="label">Conteúdo</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. DEMONSTRAÇÃO / PRÉVIA -->
+  <!-- 2. VÍDEO -->
   <section id="video">
     <div class="wrap">
-      <p class="video-caption">Veja uma prévia de como o Sistema Conteúdo Inteligente funciona.</p>
+      <p class="video-caption">Veja como o Sistema Conteúdo Inteligente funciona na prática.</p>
       <div class="video-slot" id="video-spacer">
         <div class="video-player" id="video-player">
           <video
@@ -366,22 +409,103 @@
           <button type="button" class="video-close" id="video-close" aria-label="Fechar vídeo">✕</button>
         </div>
       </div>
+      <div class="video-cta">
+        <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_video">QUERO ENTRAR NO GRUPO</a>
+      </div>
     </div>
   </section>
 
-  <!-- 6. MINHA HISTÓRIA -->
+  <!-- MEUS CONTEÚDOS -->
+  <section id="meus-conteudos">
+    <div class="wrap product-showcase">
+      <h2>Conteúdo não precisa começar do zero.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Eu comecei a testar formas mais simples de transformar ideias, conhecimento e situações do dia a dia em conteúdo.</p>
+      <div class="showcase-glow reels-glow">
+        <img src="assets/meus-reels.webp" alt="Quatro Reels reais publicados por Renato Slezinski Jr." width="1400" height="933" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. IDENTIFICAÇÃO COM AS DORES -->
+  <section id="dores">
+    <div class="wrap">
+      <div class="section-label">O problema</div>
+      <h2>Você sabe que precisa criar conteúdo. O problema é conseguir manter.</h2>
+      <p class="lead">Você sabe que estar presente nas redes sociais é importante para o seu negócio. Seus clientes estão ali. Seus concorrentes estão ali. E todos os dias existe uma oportunidade de mostrar o que você faz, responder uma dúvida, ensinar alguma coisa ou simplesmente ser lembrado. Mas, na prática, criar conteúdo acaba ficando sempre para depois.</p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></div>
+          <div><h3>Você não sabe o que postar</h3><p>Abre o Instagram, olha para a tela e não consegue pensar em uma ideia que realmente faça sentido para o seu negócio.</p></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div><h3>Você perde horas criando</h3><p>Uma ideia que deveria ser simples acaba virando uma tarde inteira pensando em roteiro, legenda, formato e edição.</p></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 1 1 3 6.2M4 12v5h5"/></svg></div>
+          <div><h3>Você começa e para</h3><p>Publica alguns dias, perde o ritmo, fica sem ideias e depois precisa começar tudo novamente.</p></div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M6 9l6 6 6-6"/><path d="M4 19h16"/></svg></div>
+          <div><h3>Você sabe muito, mas não sabe transformar em conteúdo</h3><p>Você conhece seu mercado e resolve problemas todos os dias. Só que transformar esse conhecimento em conteúdos interessantes não parece tão simples.</p></div>
+        </div>
+        <div class="pain-card span-2">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div>
+          <div><h3>Você tenta usar IA, mas recebe coisas genéricas</h3><p>Você pede ideias para o ChatGPT e recebe respostas que poderiam servir para qualquer empresa.</p></div>
+        </div>
+      </div>
+
+      <div class="quote-highlight">
+        <p>E talvez você tenha começado a acreditar que o problema é falta de criatividade.</p>
+        <p>Mas e se não for? E se o problema for simplesmente não ter um processo para transformar o que você já sabe em conteúdo?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MUDANÇA DE PERSPECTIVA -->
+  <section id="perspectiva">
+    <div class="wrap">
+      <div class="section-label">Uma outra forma de ver isso</div>
+      <h2>O problema não é você.</h2>
+      <p class="lead">Você não precisa se tornar uma máquina de ideias. Não precisa passar horas todos os dias pensando no que postar. E não precisa criar tudo do zero. Você precisa de um processo que transforme o conhecimento que já existe dentro do seu negócio em conteúdo.</p>
+      <div class="quote-highlight">
+        <p>Menos tempo pensando no que postar.</p>
+        <p>Mais tempo fazendo o que importa no seu negócio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MINHA HISTÓRIA -->
   <section id="historia">
     <div class="wrap">
       <div class="section-label">Minha história</div>
-      <h2>Por que comecei a buscar uma forma melhor de produzir conteúdo</h2>
+      <h2>Foi tentando resolver esse problema que eu comecei a construir este sistema.</h2>
       <div class="story-card" style="margin-top:32px;">
         <div class="story-photo">
           <img src="assets/renato-cutout.png" alt="Renato Slezinski Jr." width="529" height="550" loading="lazy" decoding="async">
         </div>
         <div class="story-text">
-          <p>Sempre tive vontade de empreender — já tive um e-commerce no Brasil. Quando me mudei para a Irlanda, comecei a criar conteúdo no YouTube e no Instagram com a minha esposa, mas o tempo era curto: trabalho, estudos, uma vida nova em outro país.</p>
-          <p>Passei a usar inteligência artificial para acelerar o processo — mas percebi que só pedir ideias para uma IA não resolvia. Eu precisava de um sistema para organizar o que eu já sabia sobre o meu próprio negócio.</p>
-          <p>Foi assim que nasceu o Sistema Conteúdo Inteligente — e é o que vou te mostrar nesses próximos dias.</p>
+          <p>Eu sempre tive vontade de empreender. No Brasil, já tive um e-commerce e sempre gostei da ideia de construir alguma coisa minha.</p>
+          <p>Quando vim para a Irlanda, muita coisa mudou.</p>
+          <p class="tight">Um novo país.</p>
+          <p class="tight">Uma nova língua.</p>
+          <p class="tight">Uma nova rotina.</p>
+          <p class="tight">Estudos.</p>
+          <p>Trabalho. E a necessidade de começar muita coisa praticamente do zero.</p>
+          <p>Mas o sonho de empreender continuava.</p>
+          <p>Foi aqui que comecei a criar conteúdo no YouTube e no Instagram junto com a minha esposa. O projeto começou a crescer e eu percebi que o conteúdo poderia ser uma das formas de voltar a construir um negócio próprio.</p>
+          <p>Só que existia um problema. Eu não tinha tempo sobrando. Eu estava trabalhando, estudando, aprendendo uma nova língua e tentando construir uma vida em outro país. E ainda precisava criar conteúdo.</p>
+          <p>Foi aí que comecei a perceber uma coisa: não é difícil ter uma ideia. O difícil é continuar tendo ideias, transformar essas ideias em conteúdo e fazer isso sem passar horas todos os dias pensando no que postar.</p>
+          <p>Comecei a testar maneiras mais simples de produzir. Passei a olhar para as coisas que já aconteciam no meu dia, para aquilo que eu aprendia, para as dúvidas que apareciam e para o conhecimento que eu já tinha. E comecei a usar a inteligência artificial para acelerar e organizar esse processo.</p>
+          <p>Mas percebi que simplesmente pedir ideias para uma IA não resolvia tudo. Eu precisava de um sistema. Um jeito de organizar meu conhecimento, entender o que fazia sentido para o meu público e usar a IA como parte do processo de criação.</p>
+          <p>Foi dessa tentativa de resolver um problema real da minha própria rotina que nasceu o Sistema Conteúdo Inteligente.</p>
+          <p>Foi aplicando esse processo que eu consegui transformar a criação de conteúdo em uma rotina.</p>
+          <p>Mesmo trabalhando fora, estudando e tendo pouco tempo disponível, consegui sair daquele cenário de passar horas tentando descobrir o que postar para chegar a uma rotina de 5 a 7 conteúdos por dia.</p>
+          <p class="tight">Não porque eu passei a ter inspiração o tempo todo.</p>
+          <p>Porque deixei de depender dela.</p>
+          <p>Comecei a ter um processo para encontrar ideias, desenvolver conteúdos e produzir de forma muito mais rápida.</p>
+          <p>Hoje estou transformando esse processo em um método para ajudar outras pessoas que também sabem que precisam criar conteúdo, mas não querem passar horas tentando descobrir o que postar.</p>
           <div class="story-signature">
             <div class="name">Renato Slezinski Jr.</div>
             <div class="role">Criador do Sistema Conteúdo Inteligente</div>
@@ -391,46 +515,222 @@
     </div>
   </section>
 
-  <!-- 7. O QUE VOCÊ VAI ENCONTRAR NO GRUPO -->
-  <section id="grupo">
+  <!-- 6. TRANSIÇÃO -->
+  <section id="transicao">
     <div class="wrap">
-      <div class="section-label">Dentro do grupo</div>
-      <h2>O que você vai encontrar no grupo</h2>
-      <div class="check-list">
-        <div class="check-item"><span class="mark">✓</span><p>Como funciona o Sistema Conteúdo Inteligente.</p></div>
-        <div class="check-item"><span class="mark">✓</span><p>Por que simplesmente pedir ideias ao ChatGPT normalmente não é suficiente.</p></div>
-        <div class="check-item"><span class="mark">✓</span><p>Como o conhecimento do seu próprio negócio pode ser usado para criar conteúdo.</p></div>
-        <div class="check-item"><span class="mark">✓</span><p>Como funciona o Assistente Estratégico.</p></div>
-        <div class="check-item"><span class="mark">✓</span><p>Como o método foi estruturado.</p></div>
-        <div class="check-item"><span class="mark">✓</span><p>Apresentação da primeira turma.</p></div>
-        <div class="check-item"><span class="mark">✓</span><p>Condição especial de lançamento para quem estiver no grupo.</p></div>
+      <p class="lead">Se criar conteúdo já é difícil quando você tem tempo sobrando, imagine quando precisa conciliar isso com um negócio, trabalho, família e todas as outras responsabilidades da vida.</p>
+      <p class="lead" style="margin-top:14px; color:var(--ink); font-weight:700;">Foi para tornar esse processo mais simples que eu criei o Sistema Conteúdo Inteligente.</p>
+    </div>
+  </section>
+
+  <!-- 7. APRESENTAÇÃO DO PRODUTO -->
+  <section id="produto">
+    <div class="wrap">
+      <div class="section-label">O sistema</div>
+      <h2>Um sistema para você parar de começar do zero.</h2>
+      <p class="lead">O Sistema Conteúdo Inteligente é um método para utilizar inteligência artificial de forma prática durante o processo de criação de conteúdo. Você aprende a organizar o conhecimento que já existe dentro do seu negócio, encontrar oportunidades de conteúdo, desenvolver ideias e transformar isso em conteúdos que façam sentido para o seu público.</p>
+      <p class="lead" style="margin-top:14px;">A IA deixa de ser apenas uma ferramenta para pedir respostas e passa a fazer parte do seu processo de criação.</p>
+      <div class="quote-highlight">
+        <p>Não é sobre deixar a IA fazer tudo por você.</p>
+        <p>É sobre aprender a trabalhar melhor com ela.</p>
       </div>
     </div>
   </section>
 
-  <!-- 8. PRIMEIRA TURMA -->
-  <section id="primeira-turma">
+  <!-- 8. COMO FUNCIONA -->
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="section-label">Como funciona</div>
+      <h2>Você ensina. A IA organiza. Você cria.</h2>
+
+      <div class="steps-grid">
+        <div class="step-card"><div class="num">01</div><h3>Conheça seu negócio</h3><p>O Assistente Estratégico conduz uma conversa para entender seu negócio, seus produtos, seus clientes, seus objetivos e seu mercado.</p></div>
+        <div class="step-card"><div class="num">02</div><h3>Crie seu Perfil Mestre</h3><p>As informações são organizadas em uma base de contexto personalizada para o seu negócio.</p></div>
+        <div class="step-card"><div class="num">03</div><h3>Encontre e desenvolva ideias</h3><p>Você aprende a conversar com a IA para encontrar ideias e desenvolver conteúdos muito mais específicos para sua realidade.</p></div>
+        <div class="step-card"><div class="num">04</div><h3>Crie com mais consistência</h3><p>O objetivo é transformar a criação de conteúdo em um processo mais simples e sustentável.</p></div>
+      </div>
+
+      <div class="infographic-frame">
+        <img src="assets/metodo-infografico.jpg" alt="Infográfico: o método em ação, do seu negócio até a consistência" width="733" height="1100" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSISTENTE ESTRATÉGICO -->
+  <section id="visual-produto">
+    <div class="wrap product-showcase">
+      <div class="section-label">O mecanismo</div>
+      <h2>Veja o que acontece quando a IA realmente entende o seu negócio.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">O Sistema Conteúdo Inteligente transforma o conhecimento que você já tem sobre o seu negócio em contexto para a IA — e usa esse contexto para ajudar você a criar conteúdos mais específicos e úteis.</p>
+      <div class="showcase-glow">
+        <img src="assets/demo-assistente.webp" alt="Conversa com o Assistente Estratégico de Conteúdo" width="1000" height="667" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFIL MESTRE -->
+  <section id="perfil-mestre-visual">
+    <div class="wrap product-showcase">
+      <div class="section-label">O contexto</div>
+      <h2>Tudo o que a IA aprende sobre o seu negócio, organizado num só lugar.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Depois da conversa com o Assistente, essas informações viram o seu Perfil Mestre — a base que o sistema usa para criar conteúdos com contexto de verdade.</p>
+      <div class="showcase-glow">
+        <img src="assets/demo-perfil-mestre.webp" alt="Tela do Perfil Mestre do Negócio" width="1000" height="667" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. O QUE VOCÊ RECEBE -->
+  <section id="modulos">
+    <div class="wrap">
+      <div class="section-label">O que você vai encontrar</div>
+      <h2>O que você vai construir com o Sistema Conteúdo Inteligente</h2>
+
+      <div class="module-group">
+        <div class="module-group-label available">✓ Disponível agora</div>
+        <div class="module-grid">
+          <div class="module-card available">
+            <span class="module-tag available">Liberado</span>
+            <h3>Módulo 1 — Comece Aqui</h3>
+            <ul>
+              <li>Como funciona o método</li>
+              <li>Como utilizar o sistema</li>
+              <li>Como aproveitar melhor o curso</li>
+            </ul>
+          </div>
+          <div class="module-card available">
+            <span class="module-tag available">Liberado</span>
+            <h3>Módulo 2 — Crie seu Assistente Estratégico</h3>
+            <ul>
+              <li>Configuração do Assistente Estratégico de Conteúdo</li>
+              <li>Prompt completo</li>
+              <li>Entrevista personalizada</li>
+              <li>Criação do Perfil Mestre do Negócio</li>
+              <li>Como transformar a IA em um assistente que conhece seu negócio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-group">
+        <div class="module-group-label locked">🔒 Liberado progressivamente</div>
+        <div class="module-grid">
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 3 — Como Encontrar Ideias Infinitas</h3>
+            <p>Como usar IA para encontrar ideias · Como transformar dúvidas dos clientes em conteúdo · Como usar referências e inspirações · Como nunca mais depender de inspiração para saber o que postar</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 4 — Transformando Ideias em Conteúdo</h3>
+            <p>Como desenvolver uma ideia · Como conversar com a IA para aprofundar uma ideia · Como transformar uma ideia em diferentes conteúdos</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 5 — Ganchos que Fazem Parar</h3>
+            <p>Como criar boas aberturas · Tipos de ganchos · Como adaptar ganchos para diferentes conteúdos</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 6 — Formatos de Conteúdo</h3>
+            <p>Reels · Carrosséis · Stories · Conteúdos curtos · Diferentes formatos para diferentes objetivos</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 7 — Produção com IA</h3>
+            <p>Roteiros · Legendas · Adaptação de ideias · Como produzir conteúdo de forma mais rápida</p>
+          </div>
+          <div class="module-card locked">
+            <span class="module-tag locked">🔒 Em breve</span>
+            <h3>Módulo 8 — Consistência</h3>
+            <p>Como criar uma rotina sustentável · Como organizar ideias · Como produzir conteúdo sem depender de inspiração · Como transformar criação de conteúdo em um processo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. CONVITE PARA A PRIMEIRA TURMA -->
+  <section id="versao-beta">
     <div class="wrap">
       <div class="section-label">Primeira turma</div>
       <h2>Você está sendo convidado para acompanhar a primeira turma do Sistema Conteúdo Inteligente.</h2>
-      <p class="lead">Durante o período de apresentação, vou mostrar o problema, o mecanismo, como o sistema funciona, o que o curso entrega e para quem ele foi criado.</p>
-      <div class="quote-highlight">
-        <p>No final, vou abrir uma condição especial de lançamento.</p>
-        <p>Exclusiva para quem estiver no grupo.</p>
+      <p class="lead">Durante a apresentação, vou mostrar como o sistema funciona, o que você vai aprender e para quem ele foi criado. No final, vou apresentar uma condição especial de lançamento exclusivamente para quem estiver no grupo.</p>
+
+      <div class="beta-banner" style="margin-top:28px;">
+        <div class="copy">
+          <div class="section-label" style="margin-bottom:6px;">Entrada no grupo</div>
+          <h3 style="font-size:1.15rem;">Você não precisa comprar nada para entrar no grupo.</h3>
+          <p>O grupo é gratuito. Nele você vai acompanhar a apresentação da primeira turma.</p>
+        </div>
+        <div class="price-block">
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_versao_beta">QUERO ENTRAR NO GRUPO</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 9. CTA PARA O WHATSAPP -->
-  <section class="final-cta">
+  <!-- 13. PERCEPÇÃO DE VALOR -->
+  <section id="valor">
     <div class="wrap">
-      <h2>Quer acompanhar a apresentação da primeira turma?</h2>
-      <p class="lead">Entre no grupo fechado do WhatsApp para receber as próximas informações e saber quando a condição especial de lançamento estiver disponível.</p>
-      <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_final">QUERO ENTRAR NO GRUPO</a>
+      <div class="section-label">O que você vai encontrar</div>
+      <h2>Tudo o que existe dentro do Sistema Conteúdo Inteligente</h2>
+      <div class="check-grid">
+        <div class="check-item"><span class="mark">✓</span><p>Assistente Estratégico de Conteúdo</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Perfil Mestre do Negócio</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Prompt completo</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Método de criação de ideias</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Desenvolvimento de conteúdos</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Novos módulos progressivos</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Área de membros</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Evolução contínua do método</p></div>
+      </div>
     </div>
   </section>
 
-  <!-- 10. FAQ -->
+  <!-- 14 / 15. PARA QUEM É / NÃO É -->
+  <section id="para-quem">
+    <div class="wrap">
+      <div class="fit-grid">
+        <div class="fit-card yes">
+          <h3>Esse sistema é para você se...</h3>
+          <ul>
+            <li>Você tem um negócio e sabe que precisa criar conteúdo.</li>
+            <li>Você trava na hora de decidir o que postar.</li>
+            <li>Você perde muito tempo pensando em ideias.</li>
+            <li>Você sabe muito sobre seu negócio, mas tem dificuldade de transformar isso em conteúdo.</li>
+            <li>Você quer utilizar IA de forma mais prática.</li>
+            <li>Você quer criar conteúdo com mais consistência.</li>
+            <li>Você quer diminuir o tempo gasto pensando no que postar.</li>
+          </ul>
+        </div>
+        <div class="fit-card no">
+          <h3>Talvez não seja para você se...</h3>
+          <ul>
+            <li>Você procura uma fórmula para viralizar.</li>
+            <li>Você espera crescimento garantido de seguidores.</li>
+            <li>Você quer que a IA faça todo o trabalho por você.</li>
+            <li>Você não pretende colocar o método em prática.</li>
+            <li>Você procura dinheiro rápido.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. CONVITE / OFERTA -->
+  <section id="oferta">
+    <div class="wrap">
+      <div class="section-label">Entre no grupo</div>
+      <div class="offer-card">
+        <h2>Entre no grupo e acompanhe a primeira turma.</h2>
+        <p class="offer-note" style="margin-top:8px;">Você não precisa comprar nada para entrar no grupo. O grupo é gratuito. Nele será apresentada a primeira turma do Sistema Conteúdo Inteligente e, ao final, uma condição especial de lançamento exclusiva para quem estiver lá dentro.</p>
+        <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_oferta">QUERO ENTRAR NO GRUPO</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17. FAQ -->
   <section id="faq">
     <div class="wrap">
       <div class="section-label">Perguntas frequentes</div>
@@ -449,10 +749,27 @@
           <p>Não. O grupo é para acompanhar a apresentação e a abertura da primeira turma.</p>
         </details>
         <details class="faq-item">
+          <summary>Preciso entender de inteligência artificial?</summary>
+          <p>Não. O método foi pensado para pessoas comuns, sem experiência prévia com IA.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso utilizar o método em qualquer tipo de negócio?</summary>
+          <p>O método foi pensado para pequenos negócios e profissionais autônomos de forma geral — o Perfil Mestre se adapta às informações que você fornece sobre o seu negócio.</p>
+        </details>
+        <details class="faq-item">
           <summary>Quando vou poder conhecer a condição de lançamento?</summary>
-          <p>A condição será apresentada durante o período de abertura da primeira turma.</p>
+          <p>A condição será apresentada durante o período de abertura da primeira turma, exclusivamente para quem estiver no grupo.</p>
         </details>
       </div>
+    </div>
+  </section>
+
+  <!-- 18. CTA FINAL -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Quer acompanhar a apresentação da primeira turma?</h2>
+      <p class="lead">Entre no grupo fechado do WhatsApp para acompanhar a apresentação do Sistema Conteúdo Inteligente e saber quando a condição especial de lançamento estiver disponível.</p>
+      <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_final">QUERO ENTRAR NO GRUPO</a>
     </div>
   </section>
 
