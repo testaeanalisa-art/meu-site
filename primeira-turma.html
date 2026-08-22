@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primeira Turma — Sistema Conteúdo Inteligente | Renato Slezinski Jr.</title>
+<meta name="description" content="Entre no grupo e acompanhe a apresentação do Sistema Conteúdo Inteligente — um método com IA para transformar o conhecimento do seu negócio em conteúdo.">
+<link rel="canonical" href="https://meu-site-sigma-seven.vercel.app/primeira-turma">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Primeira Turma — Sistema Conteúdo Inteligente">
+<meta property="og:description" content="Entre no grupo e acompanhe a apresentação do Sistema Conteúdo Inteligente — um método com IA para transformar o conhecimento do seu negócio em conteúdo.">
+<meta property="og:url" content="https://meu-site-sigma-seven.vercel.app/primeira-turma">
+<!-- og:image: adicionar depois de gerar uma imagem de compartilhamento real -->
+
+<!-- Local reservado para o Google Analytics, quando o ID for fornecido -->
+<!-- Local reservado para o Meta Pixel, quando o ID for fornecido -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305070A'/%3E%3Cpath d='M28 30h44M28 50h30M28 70h44' stroke='%232F5CFF' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<style>
+  :root {
+    --bg: #05070A;
+    --bg-elevated: #0D1117;
+    --bg-elevated-2: #12161D;
+    --ink: #F5F7FA;
+    --ink-muted: #9AA4AF;
+    --ink-faint: #5C6672;
+    --line: #1E242B;
+    --accent: #2F5CFF;
+    --accent-2: #6C8CFF;
+    --accent-soft: rgba(47, 92, 255, 0.14);
+    --max-width: 900px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(rgba(47,92,255,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* Top bar */
+  .topbar { padding: 20px 0; border-bottom: 1px solid var(--line); background: var(--bg); position: relative; z-index: 2; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar-brand { font-weight: 800; font-size: 0.95rem; letter-spacing: -0.01em; }
+  .topbar-back { font-size: 0.85rem; color: var(--ink-muted); text-decoration: none; }
+  .topbar-back:hover { color: var(--ink); }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-2); font-weight: 700; margin-bottom: 22px;
+    position: relative; padding: 0 10px;
+  }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 8px; height: 8px; border: 2px solid var(--accent); opacity: 0.7; }
+  .eyebrow::before { border-right: none; border-bottom: none; }
+  .eyebrow::after { border-left: none; border-top: none; }
+
+  section { padding: 76px 0; border-top: 1px solid var(--line); position: relative; }
+  section:first-of-type { border-top: none; }
+
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(2.1rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.08; margin-bottom: 20px; }
+  h2 { font-size: clamp(1.5rem, 3.5vw, 2.15rem); font-weight: 800; margin-bottom: 16px; }
+  h3 { font-size: 1.05rem; font-weight: 700; }
+
+  .section-label { font-size: 0.76rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin-bottom: 14px; }
+  p.lead { font-size: clamp(1.05rem, 2.2vw, 1.2rem); color: var(--ink-muted); max-width: 640px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font-weight: 700; font-size: 1.03rem; padding: 17px 32px; border-radius: 12px;
+    text-decoration: none; border: none; cursor: pointer; font-family: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(47, 92, 255, 0.35); }
+
+  /* Hero */
+  .hero { padding-top: 88px; padding-bottom: 24px; text-align: center; }
+  .hero .wrap { display: flex; flex-direction: column; align-items: center; }
+  .hero p.lead { margin: 0 auto 14px; }
+  .hero .lead-strong { color: var(--ink); font-weight: 700; margin: 6px auto 34px; }
+
+  /* Video is a visual continuation of the Hero, not a new section */
+  #video { border-top: none; padding-top: 8px; }
+
+  .video-caption { text-align: center; color: var(--ink-muted); font-size: 1rem; max-width: 560px; margin: 0 auto 24px; }
+  .video-slot { position: relative; aspect-ratio: 16 / 9; max-width: 720px; margin: 0 auto; }
+  .video-player {
+    position: absolute; inset: 0;
+    border-radius: 18px; overflow: hidden;
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .video-player video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+  .video-close {
+    display: none;
+    position: absolute; top: 8px; right: 8px; z-index: 2;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(5,7,10,0.75); color: var(--ink);
+    border: 1px solid var(--line);
+    align-items: center; justify-content: center;
+    font-size: 0.8rem; cursor: pointer; line-height: 1;
+  }
+  .video-player.is-docked {
+    position: fixed; inset: auto; top: auto; left: auto;
+    bottom: 20px; right: 20px;
+    width: 240px; aspect-ratio: 16 / 9;
+    z-index: 999;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  }
+  .video-player.is-docked .video-close { display: flex; }
+  .video-player.is-hidden { display: none; }
+  @media (max-width: 640px) {
+    .video-player.is-docked { width: 150px; bottom: 14px; right: 14px; }
+  }
+
+  /* Product showcase */
+  .product-showcase { text-align: center; }
+  .product-showcase h2 { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .product-showcase .lead { margin-bottom: 0; }
+  .showcase-glow {
+    position: relative;
+    max-width: 820px;
+    margin: 48px auto 0;
+    padding: 6% 4% 0;
+  }
+  .showcase-glow.reels-glow { max-width: 960px; }
+  .showcase-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0% 4% 8%;
+    background: radial-gradient(60% 60% at 50% 30%, rgba(47, 92, 255, 0.28), transparent 72%);
+    filter: blur(20px);
+    z-index: 0;
+  }
+  .showcase-glow img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.5));
+  }
+
+  /* Quote highlight */
+  .quote-highlight {
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 26px 30px;
+    margin-top: 28px;
+    max-width: 640px;
+  }
+  .quote-highlight p {
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .quote-highlight p + p { margin-top: 8px; color: var(--accent-2); }
+
+  /* Pain cards */
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .pain-card {
+    background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px 24px; display: flex; gap: 16px; align-items: center;
+  }
+  .pain-card .pain-icon {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent-2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pain-card p { color: var(--ink); font-size: 0.96rem; font-weight: 600; }
+  .pain-card.span-2 { grid-column: span 2; }
+
+  /* Simple mechanism flow */
+  .simple-flow { display: flex; flex-direction: column; gap: 0; max-width: 420px; margin: 32px auto 0; }
+  .flow-step { display: flex; align-items: center; gap: 16px; padding: 13px 0; }
+  .flow-step .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .flow-step span.label { font-weight: 700; font-size: 0.98rem; }
+  .flow-connector { width: 1px; height: 20px; background: var(--line); margin-left: 5px; }
+  .flow-step.final .dot { background: var(--accent-2); box-shadow: 0 0 0 5px var(--accent-soft); }
+  .flow-step.final span.label { color: var(--accent-2); }
+
+  /* Story */
+  .story-card { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+  .story-photo { display: flex; align-items: flex-end; justify-content: center; }
+  .story-photo img {
+    width: 100%; height: auto; display: block;
+    filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.5));
+  }
+  .story-text p { color: var(--ink-muted); font-size: 1rem; margin-bottom: 14px; max-width: 60ch; }
+  .story-signature { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .story-signature .name { font-weight: 800; font-size: 1.05rem; }
+  .story-signature .role { color: var(--ink-faint); font-size: 0.88rem; margin-top: 2px; }
+
+  /* Check list */
+  .check-list { display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin-top: 32px; }
+  .check-item { display: flex; gap: 12px; align-items: flex-start; }
+  .check-item .mark {
+    flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--accent-2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; margin-top: 2px;
+  }
+  .check-item p { color: var(--ink); font-size: 0.98rem; }
+
+  /* Primeira turma callout */
+  .callout-box {
+    background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 16px;
+    padding: 24px 26px; margin-top: 28px; max-width: 640px;
+  }
+  .callout-box p { color: var(--ink-muted); font-size: 0.95rem; }
+  .callout-box p + p { margin-top: 10px; }
+
+  /* FAQ */
+  details.faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  details.faq-item summary {
+    cursor: pointer; font-weight: 700; font-size: 1rem; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: "+"; font-size: 1.4rem; color: var(--accent-2); flex-shrink: 0; transition: transform 0.15s ease; }
+  details.faq-item[open] summary::after { transform: rotate(45deg); }
+  details.faq-item p { color: var(--ink-muted); font-size: 0.95rem; margin-top: 14px; max-width: 640px; }
+
+  /* Final CTA */
+  .final-cta { text-align: center; }
+  .final-cta h2 { max-width: 560px; margin-left: auto; margin-right: auto; }
+  .final-cta p.lead { margin-left: auto; margin-right: auto; margin-bottom: 30px; }
+
+  footer { padding: 56px 0 72px; border-top: 1px solid var(--line); text-align: center; }
+  footer p { color: var(--ink-muted); font-size: 0.92rem; margin-bottom: 20px; }
+  .footer-contacts { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 16px; font-size: 0.88rem; text-decoration: none; color: var(--ink);
+  }
+  .contact-link:hover { border-color: var(--accent); }
+  footer .copyright { margin-top: 32px; font-size: 0.8rem; color: var(--ink-faint); }
+
+  @media (max-width: 780px) {
+    .story-card { grid-template-columns: 1fr; }
+    .story-photo { max-width: 260px; margin: 0 auto; }
+  }
+
+  @media (max-width: 640px) {
+    .pain-grid { grid-template-columns: 1fr; }
+    .pain-card.span-2 { grid-column: span 1; }
+    section { padding: 52px 0; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span class="topbar-brand">Sistema Conteúdo Inteligente</span>
+      <a class="topbar-back" href="/">← Renato Slezinski Jr.</a>
+    </div>
+  </div>
+
+  <!-- 1. HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Apresentação · Primeira Turma</span>
+      <h1>Descubra como transformar o conhecimento do seu negócio em conteúdo usando IA</h1>
+      <p class="lead">Durante os próximos dias, vou apresentar o Sistema Conteúdo Inteligente, explicar como funciona o método e mostrar por que ele é diferente de simplesmente pedir ideias ao ChatGPT.</p>
+      <p class="lead lead-strong">No final, vou abrir uma condição especial de lançamento exclusivamente para quem estiver no grupo.</p>
+      <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_hero">QUERO ENTRAR NO GRUPO</a>
+    </div>
+  </header>
+
+  <!-- 2. IDENTIFICAÇÃO COM O PROBLEMA -->
+  <section id="problema">
+    <div class="wrap">
+      <div class="section-label">O problema</div>
+      <h2>Você não está sem conhecimento. O problema é transformar esse conhecimento em conteúdo.</h2>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></div>
+          <p>Você sabe muito sobre seu negócio, mas não sabe o que postar.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div>
+          <p>Abre o ChatGPT e recebe ideias genéricas.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <p>Passa muito tempo pensando em conteúdo.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 1 1 3 6.2M4 12v5h5"/></svg></div>
+          <p>Começa a produzir e depois para.</p>
+        </div>
+        <div class="pain-card span-2">
+          <div class="pain-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M6 9l6 6 6-6"/><path d="M4 19h16"/></svg></div>
+          <p>Sente que deveria publicar mais, mas não consegue manter uma rotina.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. EXPLICAÇÃO DA OPORTUNIDADE -->
+  <section id="oportunidade">
+    <div class="wrap">
+      <div class="section-label">A oportunidade</div>
+      <h2>Seu negócio já tem conteúdo. Você só precisa aprender a encontrá-lo.</h2>
+      <p class="lead">O conhecimento que você já tem sobre o seu negócio — sobre seus clientes, seu mercado, o que você resolve todos os dias — pode virar ideias, roteiros, posts, vídeos e conteúdos prontos para publicar. Falta só um processo para transformar isso.</p>
+    </div>
+  </section>
+
+  <!-- 4. COMO O SISTEMA FUNCIONA -->
+  <section id="mecanismo">
+    <div class="wrap">
+      <div class="section-label">O mecanismo</div>
+      <h2>O Sistema Conteúdo Inteligente foi criado para organizar esse processo.</h2>
+      <div class="simple-flow">
+        <div class="flow-step"><span class="dot"></span><span class="label">Conhecimento do negócio</span></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><span class="dot"></span><span class="label">A IA entende o negócio</span></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><span class="dot"></span><span class="label">Ideias</span></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step final"><span class="dot"></span><span class="label">Conteúdo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DEMONSTRAÇÃO / PRÉVIA -->
+  <section id="video">
+    <div class="wrap">
+      <p class="video-caption">Veja uma prévia de como o Sistema Conteúdo Inteligente funciona.</p>
+      <div class="video-slot" id="video-spacer">
+        <div class="video-player" id="video-player">
+          <video
+            id="apresentacao-video"
+            src="assets/video-apresentacao.mp4"
+            poster="assets/video-poster.jpg"
+            playsinline
+            muted
+            controls
+            preload="metadata"
+          ></video>
+          <button type="button" class="video-close" id="video-close" aria-label="Fechar vídeo">✕</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MINHA HISTÓRIA -->
+  <section id="historia">
+    <div class="wrap">
+      <div class="section-label">Minha história</div>
+      <h2>Por que comecei a buscar uma forma melhor de produzir conteúdo</h2>
+      <div class="story-card" style="margin-top:32px;">
+        <div class="story-photo">
+          <img src="assets/renato-cutout.png" alt="Renato Slezinski Jr." width="529" height="550" loading="lazy" decoding="async">
+        </div>
+        <div class="story-text">
+          <p>Sempre tive vontade de empreender — já tive um e-commerce no Brasil. Quando me mudei para a Irlanda, comecei a criar conteúdo no YouTube e no Instagram com a minha esposa, mas o tempo era curto: trabalho, estudos, uma vida nova em outro país.</p>
+          <p>Passei a usar inteligência artificial para acelerar o processo — mas percebi que só pedir ideias para uma IA não resolvia. Eu precisava de um sistema para organizar o que eu já sabia sobre o meu próprio negócio.</p>
+          <p>Foi assim que nasceu o Sistema Conteúdo Inteligente — e é o que vou te mostrar nesses próximos dias.</p>
+          <div class="story-signature">
+            <div class="name">Renato Slezinski Jr.</div>
+            <div class="role">Criador do Sistema Conteúdo Inteligente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. O QUE VOCÊ VAI ENCONTRAR NO GRUPO -->
+  <section id="grupo">
+    <div class="wrap">
+      <div class="section-label">Dentro do grupo</div>
+      <h2>O que você vai encontrar no grupo</h2>
+      <div class="check-list">
+        <div class="check-item"><span class="mark">✓</span><p>Como funciona o Sistema Conteúdo Inteligente.</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Por que simplesmente pedir ideias ao ChatGPT normalmente não é suficiente.</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Como o conhecimento do seu próprio negócio pode ser usado para criar conteúdo.</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Como funciona o Assistente Estratégico.</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Como o método foi estruturado.</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Apresentação da primeira turma.</p></div>
+        <div class="check-item"><span class="mark">✓</span><p>Condição especial de lançamento para quem estiver no grupo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. PRIMEIRA TURMA -->
+  <section id="primeira-turma">
+    <div class="wrap">
+      <div class="section-label">Primeira turma</div>
+      <h2>Você está sendo convidado para acompanhar a primeira turma do Sistema Conteúdo Inteligente.</h2>
+      <p class="lead">Durante o período de apresentação, vou mostrar o problema, o mecanismo, como o sistema funciona, o que o curso entrega e para quem ele foi criado.</p>
+      <div class="quote-highlight">
+        <p>No final, vou abrir uma condição especial de lançamento.</p>
+        <p>Exclusiva para quem estiver no grupo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA PARA O WHATSAPP -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Quer acompanhar a apresentação da primeira turma?</h2>
+      <p class="lead">Entre no grupo fechado do WhatsApp para receber as próximas informações e saber quando a condição especial de lançamento estiver disponível.</p>
+      <a class="btn btn-primary" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_final">QUERO ENTRAR NO GRUPO</a>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-label">Perguntas frequentes</div>
+      <h2>Antes de entrar, tire suas dúvidas</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Preciso comprar alguma coisa para entrar no grupo?</summary>
+          <p>Não. A entrada no grupo é gratuita.</p>
+        </details>
+        <details class="faq-item">
+          <summary>O que vou receber no grupo?</summary>
+          <p>Você acompanhará a apresentação do Sistema Conteúdo Inteligente, receberá informações sobre o método e saberá quando a condição especial da primeira turma estiver disponível.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Já vou receber o curso ao entrar?</summary>
+          <p>Não. O grupo é para acompanhar a apresentação e a abertura da primeira turma.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quando vou poder conhecer a condição de lançamento?</summary>
+          <p>A condição será apresentada durante o período de abertura da primeira turma.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Dúvidas antes de entrar no grupo? Fale direto comigo.</p>
+      <div class="footer-contacts">
+        <a class="contact-link" href="https://chat.whatsapp.com/F5cPkH4ZYhbBlc1nhGTX4n?mode=gi_t" target="_blank" rel="noopener" data-track="clique_grupo_footer">WhatsApp</a>
+        <a class="contact-link" href="mailto:testaeanalisa@gmail.com">E-mail</a>
+        <a class="contact-link" href="/">Página inicial</a>
+      </div>
+      <p class="copyright">© 2026 Renato Slezinski Jr. — Sistema Conteúdo Inteligente</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var spacer = document.getElementById('video-spacer');
+      var player = document.getElementById('video-player');
+      var video = document.getElementById('apresentacao-video');
+      var closeBtn = document.getElementById('video-close');
+      if (!spacer || !player || !video) return;
+
+      var closedByUser = false;
+
+      closeBtn.addEventListener('click', function () {
+        closedByUser = true;
+        player.classList.add('is-hidden');
+        video.pause();
+      });
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              player.classList.remove('is-docked');
+              if (!closedByUser) {
+                player.classList.remove('is-hidden');
+              }
+              var playPromise = video.play();
+              if (playPromise) { playPromise.catch(function () {}); }
+            } else if (entry.boundingClientRect.top < 0) {
+              player.classList.add('is-docked');
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(spacer);
+      }
+    })();
+  </script>
+
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    document.addEventListener('click', function (event) {
+      var el = event.target.closest('[data-track]');
+      if (!el || !window.va) return;
+      window.va('event', { name: el.getAttribute('data-track') });
+    });
+
+    (function () {
+      function track(name, props) {
+        if (!window.va) return;
+        window.va('event', Object.assign({ name: name }, props || {}));
+      }
+
+      var scrollMarks = [25, 50, 75, 100];
+      var scrollFired = {};
+      window.addEventListener('scroll', function () {
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) return;
+        var scrolled = (window.scrollY / docHeight) * 100;
+        scrollMarks.forEach(function (mark) {
+          if (scrolled >= mark && !scrollFired[mark]) {
+            scrollFired[mark] = true;
+            track('rolagem_' + mark + 'pct');
+          }
+        });
+      }, { passive: true });
+
+      [30, 60, 120, 300].forEach(function (seconds) {
+        setTimeout(function () { track('tempo_' + seconds + 's'); }, seconds * 1000);
+      });
+
+      var video = document.getElementById('apresentacao-video');
+      if (video) {
+        var videoFired = {};
+        video.addEventListener('timeupdate', function () {
+          if (!video.duration) return;
+          var pct = (video.currentTime / video.duration) * 100;
+          [25, 50, 75].forEach(function (mark) {
+            if (pct >= mark && !videoFired[mark]) {
+              videoFired[mark] = true;
+              track('video_' + mark + 'pct');
+            }
+          });
+        });
+        video.addEventListener('ended', function () {
+          if (!videoFired[100]) {
+            videoFired[100] = true;
+            track('video_100pct');
+          }
+        });
+      }
+
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        item.addEventListener('toggle', function () {
+          if (item.open) {
+            var q = item.querySelector('summary');
+            track('faq_aberto', { pergunta: q ? q.textContent.trim() : '' });
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
